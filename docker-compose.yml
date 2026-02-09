@@ -1,8 +1,0 @@
-services:
-  php-course:      
-    build: .
-    container_name: php_zend_modern_env 
-    ports:
-      - "8080:80"
-    volumes:
-      - .:/var/www/html

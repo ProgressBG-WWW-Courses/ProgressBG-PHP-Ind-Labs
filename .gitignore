@@ -1,0 +1,9 @@
+nohup.*
+/students
+
+__*
+.*
+!/.gitignore
+
+*.zip
+.TODO
