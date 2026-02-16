@@ -1,0 +1,18 @@
+services:
+  php-server:
+    build: .
+    image: php-labs:8.5
+    container_name: php_labs_env
+    ports:
+      - "8081:80"
+    volumes:
+      - .:/var/www/html
+
+  # Use Brawser-sync for device sync and hot reload
+  browser-sync:
+    image: browser-sync/browser-sync
+    container_name: php_live_reload
+    network_mode: "host" # Shares ports directly with your ThinkPad
+    volumes:
+      - .:/source
+    command: start --proxy "localhost:8081" --files "/source/**/*.php" --port 3000

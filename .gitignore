@@ -7,3 +7,4 @@ __*
 
 *.zip
 .TODO
+/nbproject/private/
