@@ -1,18 +1,32 @@
 services:
-  php-server:
-    build: .
+  php85:
+    build:
+      context: .
+      dockerfile: Dockerfile.php85
     image: php-labs:8.5
-    container_name: php_labs_env
+    container_name: php_labs_85
     ports:
       - "8081:80"
     volumes:
       - .:/var/www/html
 
-  # Use Brawser-sync for device sync and hot reload
+  php74:
+    build:
+      context: .
+      dockerfile: Dockerfile.php74
+    image: php-labs:7.4
+    container_name: php_labs_74
+    ports:
+      - "8082:80"
+    volumes:
+      - .:/var/www/html
+
   browser-sync:
-    image: browser-sync/browser-sync
+    image: node:alpine
     container_name: php_live_reload
-    network_mode: "host" # Shares ports directly with your ThinkPad
+    network_mode: "host"
     volumes:
       - .:/source
-    command: start --proxy "localhost:8081" --files "/source/**/*.php" --port 3000
+      - ./bs-config.js:/bs-config.js
+    working_dir: /source
+    command: sh -c "npm install -g browser-sync && browser-sync start --config /bs-config.js"

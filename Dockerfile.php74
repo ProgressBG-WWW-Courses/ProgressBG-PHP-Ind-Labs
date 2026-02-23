@@ -1,0 +1,8 @@
+FROM php:7.4-apache
+
+WORKDIR /var/www/html
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# RUN docker-php-ext-install pdo_mysql
+EXPOSE 80

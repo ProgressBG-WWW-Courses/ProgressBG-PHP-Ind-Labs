@@ -3,8 +3,7 @@ FROM php:8.5-apache
 # Set the working directory inside the container
 WORKDIR /var/www/html
 
-# Copy your source code into the Apache document root
-COPY . /var/www/html/
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Optional: Install common extensions (e.g., PDO MySQL)
 # RUN docker-php-ext-install pdo_mysql
