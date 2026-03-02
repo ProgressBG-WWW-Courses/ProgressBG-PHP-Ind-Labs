@@ -19,17 +19,18 @@ try {
 }
 
 
-// // Simple query — returns all rows as an array of associative arrays
-// $rows = $pdo->query('SELECT * FROM users')->fetchAll(PDO::FETCH_ASSOC);
-
-// foreach ($rows as $row) {
-//     echo $row['id'] . ': ' . $row['username'] . PHP_EOL;
-// }
-
-
-// Named placeholders (more readable for many parameters)
-$stmt = $pdo->prepare('INSERT INTO users (username, email) VALUES (:username, :email)');
-$stmt->execute([
-    ':username'  => 'Ivan',
-    ':email' => 'ivan@abv.bg',
-]);
+try{
+    $pdo->query(
+        "CREATE TABLE orders (".
+          "order_id INT AUTO_INCREMENT PRIMARY KEY,".
+          "user_id INT NOT NULL,".
+          "order_date DATETIME DEFAULT CURRENT_TIMESTAMP,".
+          "total_amount DECIMAL(10, 2) NOT NULL,".
+          "status ENUM('pending', 'shipped', 'delivered', 'cancelled') DEFAULT 'pending',".
+          "shipping_address TEXT,".        
+          "FOREIGN KEY (user_id) REFERENCES users(id)".
+        ");"
+    );
+} catch (\PDOException $e) {
+     echo "PDO Errorr: " . $e->getMessage();
+}
