@@ -1,5 +1,9 @@
 module.exports = {
   files: ["./**/*.php"],
+  watchOptions: {
+    usePolling: true,
+    interval: 500
+  },
   port: 3000,
   ui: false,
   open: false,
