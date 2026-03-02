@@ -1,12 +1,19 @@
 FROM php:8.5-apache
 
-# Set the working directory inside the container
-WORKDIR /var/www/html
+# 1. Install system dependencies for Doctrine and Composer
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    zip \
+    unzip \
+    libicu-dev \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install pdo pdo_mysql intl zip
 
+# 2. Enable Apache mod_rewrite (often needed for ORM/Framework routing)
+RUN a2enmod rewrite
+
+# 3. Install Composer globally
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Optional: Install common extensions (e.g., PDO MySQL)
-# RUN docker-php-ext-install pdo_mysql
-
-# Apache is already configured to expose port 80
-EXPOSE 80
+# 4. Set the working directory
+WORKDIR /var/www/html
