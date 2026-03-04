@@ -45,5 +45,18 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
 
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: php_labs_pma
+    restart: always
+    ports:
+      - "8083:80"
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root_password
+    depends_on:
+      - mariadb
+
 volumes:
   mariadb_data:
