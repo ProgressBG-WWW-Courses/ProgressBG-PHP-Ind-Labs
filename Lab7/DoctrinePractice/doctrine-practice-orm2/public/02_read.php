@@ -4,6 +4,7 @@ require __DIR__ . '/../bootstrap.php';
 
 use App\Entity\BookEntity;
 
+// $repo = $em->getRepository("BookEntity");
 $repo = $em->getRepository(BookEntity::class);
 
 // Find by primary key — returns one BookEntity or null
