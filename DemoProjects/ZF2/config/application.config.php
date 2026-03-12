@@ -8,6 +8,8 @@ return array(
     // List of modules to load
     'modules' => array(
         'Application',
+        'Hotel',
+        'Room',
     ),
 
     'module_listener_options' => array(

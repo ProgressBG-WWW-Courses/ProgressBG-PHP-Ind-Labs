@@ -15,8 +15,8 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'index',
+                        'controller' => 'Application\Controller\Index', // call IndexController
+                        'action'     => 'index',// matches indexAction() in IndexController
                     ),
                 ),
             ),
