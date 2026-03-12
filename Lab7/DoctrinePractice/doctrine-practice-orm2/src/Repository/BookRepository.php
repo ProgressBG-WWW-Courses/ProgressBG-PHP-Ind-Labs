@@ -2,12 +2,13 @@
 // File: src/Repository/BookRepository.php
 namespace App\Repository;
 
+use App\Entity\AuthorEntity;
 use Doctrine\ORM\EntityRepository;
 
 class BookRepository extends EntityRepository
 {
-    /** Find all books by a given author, newest first. */
-    public function findByAuthor(string $author): array
+    /** Find all books by a given author entity, newest first. */
+    public function findByAuthor(AuthorEntity $author): array
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.author = :author')

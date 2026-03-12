@@ -16,11 +16,13 @@ $config = Setup::createAnnotationMetadataConfiguration(
     false                        // false = use full AnnotationReader (required for @ORM\...)
 );
 
-// Database connection — uses Docker MariaDB on port 3308
+// Database connection — auto-detect: inside Docker container use service name,
+// from host use forwarded port
+$isDocker = gethostbyname('mariadb') !== 'mariadb';
 $conn = [
     'driver'   => 'pdo_mysql',
-    'host'     => '127.0.0.1',
-    'port'     => 3308,
+    'host'     => $isDocker ? 'mariadb' : '127.0.0.1',
+    'port'     => $isDocker ? 3306 : 3308,
     'dbname'   => 'doctrine_practice',
     'user'     => 'admin',
     'password' => 'admin1234',

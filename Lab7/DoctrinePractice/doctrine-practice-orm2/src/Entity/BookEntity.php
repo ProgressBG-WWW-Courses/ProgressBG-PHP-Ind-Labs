@@ -20,7 +20,10 @@ class BookEntity
     /** @ORM\Column(type="string", name="title") */
     protected $title;
 
-    /** @ORM\Column(type="string", name="author") */
+    /**
+     * @ORM\ManyToOne(targetEntity="AuthorEntity", inversedBy="books")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable=true)
+     */
     protected $author;
 
     /** @ORM\Column(type="integer", name="year") */
@@ -33,8 +36,8 @@ class BookEntity
     public function getId()            { return $this->id; }
     public function getTitle()         { return $this->title; }
     public function setTitle($v)       { $this->title = $v; return $this; }
-    public function getAuthor()        { return $this->author; }
-    public function setAuthor($v)      { $this->author = $v; return $this; }
+    public function getAuthor(): ?AuthorEntity { return $this->author; }
+    public function setAuthor(?AuthorEntity $v): self { $this->author = $v; return $this; }
     public function getYear()          { return $this->year; }
     public function setYear($v)        { $this->year = (int) $v; return $this; }
     public function isAvailable()      { return $this->isAvailable; }

@@ -3,11 +3,15 @@
 require __DIR__ . '/../bootstrap.php';
 
 use App\Entity\BookEntity;
+use App\Entity\AuthorEntity;
+
+// Load the author entity first
+$author = $em->getRepository(AuthorEntity::class)->findOneBy(['lastName' => 'Goodfellow']);
 
 // getRepository() now returns a BookRepository instance
 $repo = $em->getRepository(BookEntity::class);
 
-$goodfellowBooks = $repo->findByAuthor('Ian Goodfellow');
+$goodfellowBooks = $author ? $repo->findByAuthor($author) : [];
 $onLoan          = $repo->findOnLoan();
 
 echo "=== Books by Ian Goodfellow ===" . PHP_EOL;

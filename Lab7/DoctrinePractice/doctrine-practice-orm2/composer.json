@@ -12,8 +12,8 @@
         }
     ],
     "require": {
-        "doctrine/orm": "^2.19",
-        "doctrine/annotations": "^2.0",
-        "symfony/cache": "^7.4"
+        "doctrine/orm": "^2.14",
+        "doctrine/annotations": "^1.14",
+        "symfony/cache": "^5.4"
     }
 }
