@@ -20,6 +20,8 @@ services:
       - "8082:80"
     volumes:
       - .:/var/www/html
+      - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
+
 
   browser-sync:
     image: node:alpine

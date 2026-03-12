@@ -1,6 +1,6 @@
 FROM php:7.4-apache
 
-# 1. Install system dependencies for Doctrine and Composer
+# Install system dependencies for Doctrine and Composer
 RUN apt-get update && apt-get install -y \
     libzip-dev \
     zip \
@@ -9,11 +9,14 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure intl \
     && docker-php-ext-install pdo pdo_mysql intl zip
 
-# 2. Enable Apache mod_rewrite (often needed for ORM/Framework routing)
+# Enable Apache mod_rewrite (often needed for ORM/Framework routing)
 RUN a2enmod rewrite
 
-# 3. Install Composer globally
+# Install Composer globally
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# 4. Set the working directory
+# copy the custom php.ini configuration to the container
+# COPY php.ini /usr/local/etc/php/conf.d/custom.ini
+
+# Set the working directory
 WORKDIR /var/www/html
