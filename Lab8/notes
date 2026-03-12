@@ -1,0 +1,28 @@
+http://localhost:8082/Lab7/ZF2/public/ => '/'
+http://localhost:8082/Lab7/ZF2/public/hotels => '/hotels'
+http://localhost:8082/Lab7/ZF2/public/room/23 => '/hotel/room/23'
+http://localhost:8082/Lab7/ZF2/public/room/5 => '/hotel/room/5'
+http://localhost:8082/Lab7/ZF2/public/room/ => '/hotel/room/'
+
+
+# Segment 
+/room/abc
+route = '/room/:id' =room/23 , id = 23
+route = '/room/[:id]' =room , 
+
+
+
+'archive' => [
+    'type'    => 'Regex',
+    'options' => [
+        'regex'  => '/archive/(?P[0-9]{4})/([0-9]{2})',
+        'spec'   => '/archive/%$2%/%$1%',
+        'defaults' => [
+            'controller' => 'Application\Controller\Archive',
+            'action'     => 'list',
+        ],
+    ],
+],
+
+
+module/HotelRegistration/view/hotel-registration/room/index.phtml

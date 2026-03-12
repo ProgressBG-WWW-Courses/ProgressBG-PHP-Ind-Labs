@@ -1,0 +1,37 @@
+<?php if ($this->room): ?>
+<h1>Room Details</h1>
+
+<table border="1" cellpadding="10" cellspacing="0">
+    <tr>
+        <th>Property</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>Room ID</td>
+        <td><?php echo $this->room['id']; ?></td>
+    </tr>
+    <tr>
+        <td>Type</td>
+        <td><?php echo $this->room['type']; ?></td>
+    </tr>
+    <tr>
+        <td>Number of Beds</td>
+        <td><?php echo $this->room['beds']; ?></td>
+    </tr>
+    <tr>
+        <td>Price per Night</td>
+        <td>$<?php echo $this->room['price']; ?></td>
+    </tr>
+    <tr>
+        <td>Hotel</td>
+        <td><?php echo $this->room['hotel']; ?></td>
+    </tr>
+</table>
+
+<p><a href="<?php echo $this->url('hotels'); ?>">Back to Hotels</a></p>
+
+<?php else: ?>
+<h1>Room Not Found</h1>
+<p>No room found with ID: <?php echo $this->roomId; ?></p>
+<p><a href="<?php echo $this->url('hotels'); ?>">Back to Hotels</a></p>
+<?php endif; ?>
