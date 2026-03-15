@@ -22,17 +22,6 @@ services:
       - .:/var/www/html
       - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
 
-
-  browser-sync:
-    image: node:alpine
-    container_name: php_live_reload
-    network_mode: "host"
-    volumes:
-      - .:/source
-      - ./bs-config.js:/bs-config.js
-    working_dir: /source
-    command: sh -c "npm install -g browser-sync && browser-sync start --config /bs-config.js"
-
   mariadb:
     image: mariadb:latest
     container_name: php_labs_db
