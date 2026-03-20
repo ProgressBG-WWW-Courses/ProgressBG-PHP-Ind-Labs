@@ -1,0 +1,28 @@
+1. Revolute integration in kitt:     
+
+    1. Open `http://localhost:8080/kitt_v2/public/online-booking/book/create/58414`
+    2. Click the **Invoice** tab
+    3. Click **Pay Total** — should redirect (same tab) to Revolut's hosted checkout page
+    3.1. Use revolut test card: 4929420573595709
+
+
+
+    TODO: 
+        fill in revolute "Email" with kitt registration
+        add: payment notice (основание за плащане)
+        check: modify To "kitt.bg" For: [Reservation No]
+
+        https://sandbox-checkout.revolut.com/payment-link/e3abdd0c-348e-4b0a-8821-ba9e9e39ff32
+
+        https://checkout.revolut.com/pay/6449e00f-bd68-4757-ba5c-14a41aa9be93
+
+
+2. Setup ZF2_Demo on VPS:
+
+    ssh ubuntu@94.156.92.144
+    ssh admin@94.156.92.144
+
+
+    TODO: check FW for 8088 ....
+
+3. Lectures ...
