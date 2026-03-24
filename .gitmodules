@@ -1,3 +1,3 @@
 [submodule "DemoProjects/ZF2_Demo"]
 	path = DemoProjects/ZF2_Demo
-	url = git@github.com-ProgressBG-WWW-Courses:ProgressBG-WWW-Courses/ZF2_Demo.git
+	url = https://github.com/ProgressBG-WWW-Courses/ZF2_Demo.git
